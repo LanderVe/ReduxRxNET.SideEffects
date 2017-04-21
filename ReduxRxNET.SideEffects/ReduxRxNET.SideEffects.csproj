@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+    <PackageId>ReduxRxNET.SideEffects</PackageId>
+    <PackageVersion>0.0.1-alpha</PackageVersion>
+    <Authors>Lander Verhack</Authors>
+    <Description>Side Effects for ReduxRxNET</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/LanderVe/ReduxRxNET.SideEffects/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/LanderVe/ReduxRxNET.SideEffects</PackageProjectUrl>
+    <PackageReleaseNotes>First alpha</PackageReleaseNotes>
+    <Copyright>Copyright 2017 Lander Verhack. All rights reserved.</Copyright>
+    <PackageTags>ReduxRxNET Redux Rx Reactive Store SideEffect Effect Async Thunk ngrx</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>ReduxRxNET.SideEffects.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReduxRxNET.Store" Version="0.0.1-alpha" />
+    <PackageReference Include="System.Reactive" Version="3.1.1" />
+  </ItemGroup>
+
+</Project>
