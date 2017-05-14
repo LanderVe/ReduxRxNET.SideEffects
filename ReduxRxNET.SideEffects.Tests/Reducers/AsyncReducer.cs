@@ -20,36 +20,32 @@ namespace ReduxRxNET.SideEffects.Tests.Reducers
         state = initialValue;
       }
 
-      if (action is LoadAction)
+      switch (action)
       {
-        return new ApplicationState(
-          loading: true,
-          data: state.Data
-        );
+        case LoadAction loadAction:
+          return new ApplicationState(
+            loading: true,
+            data: state.Data
+          );
+        case SuccessAction successAction:
+          return new ApplicationState(
+            loading: false,
+            data: successAction.Data
+          );
+        case FailAction failAction:
+          return new ApplicationState(
+            loading: false,
+            data: ImmutableList<int>.Empty
+          );
+        default:
+          return state;
       }
 
-      var successAction = action as SuccessAction;
-      if (successAction != null)
-      {
-        return new ApplicationState(
-          loading: false,
-          data: successAction.Data
-        );
-      }
-
-      if (action is FailAction)
-      {
-        return new ApplicationState(
-          loading: false,
-          data: ImmutableList<int>.Empty
-        );
-      }
-
-      return state;
     }
 
     //actions
-    internal class LoadAction {
+    internal class LoadAction
+    {
       private readonly bool shouldFail;
       public bool ShouldFail => shouldFail;
       private readonly int flag;
@@ -61,7 +57,8 @@ namespace ReduxRxNET.SideEffects.Tests.Reducers
         this.flag = flag;
       }
     }
-    internal class SuccessAction {
+    internal class SuccessAction
+    {
       private readonly ImmutableList<int> data;
       public ImmutableList<int> Data => data;
 

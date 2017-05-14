@@ -8,21 +8,17 @@ namespace ReduxRxNET.SideEffects.Tests.Reducers
   //reducer
   class IncrementReducer : Reducer<int>
   {
-    public override int Reduce(int state, object action)
+    public override int Reduce(int state = 0, object action = null)
     {
-      var incrementAction = action as IncrementAction;
-      if (incrementAction != null)
+      switch (action)
       {
-        return ++state;
+        case IncrementAction incrementAction:
+          return ++state;
+        case DecrementAction decrementAction:
+          return --state;
+        default:
+          return state;
       }
-
-      var decrementAction = action as DecrementAction;
-      if (decrementAction != null)
-      {
-        return --state;
-      }
-
-      return state;
     }
 
     //actions
